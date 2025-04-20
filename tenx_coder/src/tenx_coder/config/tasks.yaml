@@ -1,17 +1,20 @@
-research_task:
+project_manager_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
-  expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    Carefully analyze the given project description provided by the user.
 
-reporting_task:
-  description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Your task is to break it down into a detailed list of frontend and backend tools, technologies, architecture, and user flows required to build the product.
+
+    Think through the implementation from a developer's point of view and clearly define what’s needed for both frontend and backend engineers to begin work without confusion.
+
+    The current year is {current_year}, so use up-to-date tools and practices.
+
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A detailed outline containing:
+    - Recommended frontend stack (with reasons)
+    - Recommended backend stack (with reasons)
+    - API endpoints or integration needs
+    - User flows (step-by-step)
+    - Any architectural notes (e.g., microservices, monolith, etc.) - prefer monolith
+    - Potential third-party tools/services (if any) - not 100% needed
+
+  agent: project_manager
