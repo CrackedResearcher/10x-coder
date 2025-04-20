@@ -23,6 +23,20 @@ class TenxCoder():
             config=self.agents_config['project_manager'],
             verbose=True
         )
+    
+    @agent
+    def frontend_dev(self) -> Agent:
+        return Agent(
+            config=self.agents_config['frontend_dev'],
+            verbose=True
+        )
+    
+    @agent
+    def backend_dev(self) -> Agent:
+        return Agent(
+            config=self.agents_config['backend_dev'],
+            verbose=True
+        )
 
 
     # To learn more about structured task outputs,
@@ -33,6 +47,20 @@ class TenxCoder():
         return Task(
             config=self.tasks_config['project_manager_task'],
         )
+    
+    @task
+    def frontend_dev_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['frontend_dev_task'],
+        )
+    
+    @task
+    def backend_dev_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['backend_dev_task'],
+        )
+    
+
 
 
 

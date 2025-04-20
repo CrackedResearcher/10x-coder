@@ -34,7 +34,11 @@ Auth should be simple (Google or email login). This is a SaaS platform, so event
     }
     
     try:
-        TenxCoder().crew().kickoff(inputs=inputs)
+        res = TenxCoder().crew().kickoff(inputs=inputs)
+
+        print("###############")
+        print("the exection resulted in this sortassetup: \n\n", res)
+
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 

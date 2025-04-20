@@ -4,17 +4,66 @@ project_manager_task:
 
     Your task is to break it down into a detailed list of frontend and backend tools, technologies, architecture, and user flows required to build the product.
 
-    Think through the implementation from a developer's point of view and clearly define what’s needed for both frontend and backend engineers to begin work without confusion.
+    Think from a developer's point of view and clearly define:
+    - What frontend and backend developers need to implement
+    - What tech stacks they should use (and why)
+    - How the system will function end-to-end
 
-    The current year is {current_year}, so use up-to-date tools and practices.
+    The current year is {current_year}, so suggest modern, relevant tools and frameworks.
 
   expected_output: >
-    A detailed outline containing:
+    A comprehensive technical breakdown containing:
     - Recommended frontend stack (with reasons)
     - Recommended backend stack (with reasons)
-    - API endpoints or integration needs
-    - User flows (step-by-step)
-    - Any architectural notes (e.g., microservices, monolith, etc.) - prefer monolith
-    - Potential third-party tools/services (if any) - not 100% needed
+    - High-level user flows
+    - Frontend component structure and interactions
+    - Backend API endpoints (with methods, payloads, and descriptions)
+    - Any architectural notes (e.g., monolith, microservices, serverless)
+    - Suggested third-party tools or services (if applicable)
 
+  human_input: True
   agent: project_manager
+
+
+frontend_dev_task:
+  description: >
+    Your job as the frontend developer is to implement the UI for the project, strictly following the outline provided by the Project Manager.
+
+    Use the recommended frontend stack and component structure. Follow the user flows to build an intuitive, modern, and responsive interface.
+
+    Do not make architectural decisions — rely only on the instructions from the Project Manager.
+
+    The current year is {current_year}, so use current best practices and tools.
+
+  expected_output: >
+    A working, user-friendly frontend that includes:
+    - All required components as described
+    - State management where needed
+    - Proper API calls to the described endpoints
+    - Clean and maintainable code using the given stack
+
+  human_input: False
+  context: [project_manager_task]
+  agent: frontend_dev
+
+
+backend_dev_task:
+  description: >
+    Your job as the backend developer is to implement the backend systems for the project, based strictly on the outline provided by the Project Manager.
+
+    Use the recommended backend stack. Build out the described API endpoints, data models, and integrations.
+
+    Do not make assumptions — only implement what's specified.
+
+    The current year is {current_year}, so follow current best practices for security, scalability, and performance.
+
+  expected_output: >
+    A working, well-structured backend that includes:
+    - All API endpoints with proper request/response handling
+    - Data validation and business logic as per requirements
+    - Database schema and models based on project needs
+    - Integration with third-party tools if specified
+
+  human_input: False
+  context: [project_manager_task]
+  agent: backend_dev
